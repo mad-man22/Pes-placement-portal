@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Campus Placement Company Intelligence Platform - Light Theme Design System */
+
+@layer base {
+  :root {
+    /* Premium Light Theme - Crisp & Vibrant */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Vibrant Primary: Electric Violet/Indigo */
+    --primary: 250 95% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Soft Lavender tint */
+    --secondary: 250 20% 96%;
+    --secondary-foreground: 250 40% 20%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 250 60% 94%;
+    --accent-foreground: 250 90% 40%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 85%;
+    /* Darker border for visibility on white */
+    --input: 214.3 31.8% 91.4%;
+    --ring: 250 95% 60%;
+
+    --radius: 1rem;
+    /* More rounded */
+
+    /* Feature Colors */
+    --enterprise: 250 95% 60%;
+    --startup: 160 84% 39%;
+    --scaleup: 40 95% 55%;
+    --product: 290 85% 60%;
+    --service: 190 90% 40%;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Premium Dark Theme - Deep Space/Midnight */
+    --background: 260 20% 6%;
+    /* Deep purple-black */
+    --foreground: 210 40% 98%;
+
+    --card: 260 20% 8%;
+    /* Slightly lighter deep purple */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 260 20% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 250 95% 65%;
+    /* Lighter violet for dark mode */
+    --primary-foreground: 260 20% 6%;
+
+    --secondary: 260 20% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 260 20% 15%;
+    --muted-foreground: 250 20% 65%;
+
+    --accent: 260 30% 20%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 260 20% 15%;
+    --input: 260 20% 15%;
+    --ring: 250 95% 65%;
+
+    /* Sidebar */
+    --sidebar-background: 260 20% 5%;
+    --sidebar-foreground: 250 20% 90%;
+    --sidebar-primary: 250 95% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 260 20% 15%;
+    --sidebar-accent-foreground: 250 20% 90%;
+    --sidebar-border: 260 20% 15%;
+    --sidebar-ring: 250 95% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Premium Global Background */
+  /* Universal Background: Pure White with Geometric Grid */
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+
+    background-color: #f9fafb !important;
+    /* Plain Light Shade (Gray 50) */
+    background-image: none !important;
+    background-attachment: fixed !important;
+  }
+
+  html {
+    background-color: #ffffff !important;
+  }
+
+  /* Typography headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer components {
+  .card-elevated {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1;
+  }
+
+  .glass-panel {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+
+  .section-header {
+    @apply text-lg font-semibold text-foreground tracking-tight;
+  }
+
+  .data-label {
+    @apply text-sm font-medium text-muted-foreground;
+  }
+
+  .data-value {
+    @apply text-foreground;
+  }
+
+  .category-badge-enterprise {
+    @apply bg-[hsl(215, 70%, 45%)] text-white;
+  }
+
+  .category-badge-startup {
+    @apply bg-[hsl(150, 60%, 40%)] text-white;
+  }
+
+  .category-badge-scaleup {
+    @apply bg-[hsl(35, 90%, 50%)] text-white;
+  }
+}
