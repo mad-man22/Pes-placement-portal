@@ -21,7 +21,7 @@ export default {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg)',
+        // Removing hero-glow for a cleaner look
       },
       colors: {
         border: "hsl(var(--border))",
@@ -67,14 +67,15 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        enterprise: "hsl(var(--enterprise))",
-        startup: "hsl(var(--startup))",
-        scaleup: "hsl(var(--scaleup))",
-        product: "hsl(var(--product))",
-        service: "hsl(var(--service))",
-        success: "hsl(var(--success))",
-        warning: "hsl(var(--warning))",
-        info: "hsl(var(--info))",
+        // Professional/Corporate Colors (Muted & Semantic)
+        enterprise: "hsl(220, 15%, 40%)", // Muted Navy
+        startup: "hsl(150, 10%, 40%)",    // Muted Green
+        scaleup: "hsl(30, 20%, 50%)",     // Muted Amber
+        product: "hsl(260, 10%, 50%)",    // Muted Purple
+        service: "hsl(200, 15%, 45%)",    // Muted Blue
+        success: "hsl(150, 30%, 40%)",    // Professional Green
+        warning: "hsl(40, 60%, 50%)",     // Professional Amber
+        info: "hsl(210, 50%, 50%)",       // Professional Blue
       },
       borderRadius: {
         lg: "var(--radius)",

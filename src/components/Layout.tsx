@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { IntelliplaceAssistant } from "@/components/chat/IntelliplaceAssistant";
 
+import { MobileNav } from "@/components/layout/MobileNav";
+
 interface LayoutProps {
     children: ReactNode;
     showBackButton?: boolean;
@@ -16,9 +18,10 @@ const Layout = ({ children, showBackButton = false }: LayoutProps) => {
 
     return (
         <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950/50 flex flex-col">
+            <MobileNav />
             {/* Main Content Area - with padding on left for the fixed sidebar */}
             <div className="flex-1 flex">
-                <main className="flex-1 container py-6 animate-in fade-in duration-500 ml-[80px] lg:ml-[80px] transition-all">
+                <main className="flex-1 container py-6 animate-in fade-in duration-500 ml-0 md:ml-[80px] lg:ml-[80px] transition-all">
                     {showBackButton && (
                         <div className="mb-6">
                             <Button
@@ -38,7 +41,7 @@ const Layout = ({ children, showBackButton = false }: LayoutProps) => {
                 <Sidebar />
             </div>
             {/* Footer adjustment */}
-            <div className="ml-[80px]">
+            <div className="ml-0 md:ml-[80px]">
                 <Footer />
             </div>
             <IntelliplaceAssistant />

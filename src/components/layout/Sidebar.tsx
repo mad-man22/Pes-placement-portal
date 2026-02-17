@@ -1,9 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
-import { Building2, BarChart2, Brain, Briefcase, Zap, GitCompare, LayoutDashboard } from "lucide-react";
+import { Building2, BarChart2, Brain, Briefcase, Zap, GitCompare, LayoutDashboard, LogOut, Code2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/context/AuthContext";
+import { Button } from "@/components/ui/button";
 
 export const Sidebar = () => {
     const location = useLocation();
+    const { user, signOut } = useAuth();
 
     const isActive = (path: string) => {
         if (path === '/' && location.pathname === '/') return true;
@@ -13,24 +16,23 @@ export const Sidebar = () => {
 
     const navItems = [
         { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-        { path: '/', label: 'Companies', icon: Building2 },
+        { path: '/companies', label: 'Companies', icon: Building2 }, // Fixed path
         { path: '/compare', label: 'Compare', icon: GitCompare },
         { path: '/skill-fit', label: 'Skill Fit', icon: Brain },
         { path: '/hiring-process', label: 'Hiring', icon: Briefcase },
         { path: '/hiring-skillsets', label: 'Skill Sets', icon: BarChart2 },
+        { path: '/practice', label: 'Practice', icon: Code2 },
         { path: '/innovx', label: 'INNOVX', icon: Zap },
     ];
 
     return (
-        <aside className="w-[80px] hover:w-64 transition-all duration-300 ease-in-out bg-white/80 dark:bg-black/80 backdrop-blur-md border-r border-white/20 h-screen fixed left-0 top-0 z-50 flex flex-col shadow-2xl group overflow-hidden">
-            <div className="h-20 flex items-center px-5 gap-3 border-b border-white/10 transition-all overflow-hidden whitespace-nowrap">
-                <div className="h-10 w-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shrink-0 shadow-lg">
-                    <span className="text-white font-bold text-xl">I</span>
-                </div>
+        <aside className="hidden md:flex w-[80px] hover:w-64 transition-all duration-300 ease-in-out bg-white/80 dark:bg-black/80 backdrop-blur-md border-r border-white/20 h-screen fixed left-0 top-0 z-50 flex-col shadow-2xl group overflow-hidden">
+            <Link to="/dashboard" className="h-20 flex items-center px-4 gap-3 border-b border-white/10 transition-all overflow-hidden whitespace-nowrap hover:bg-slate-50/5 dark:hover:bg-white/5">
+                <img src="/solologo.png" alt="Intelliplace" className="h-10 w-auto shrink-0" />
                 <span className="font-bold text-xl tracking-tight opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 delay-100">
                     Intelliplace
                 </span>
-            </div>
+            </Link>
 
             <nav className="flex-1 py-8 flex flex-col gap-2 px-3">
                 {navItems.map((item) => (
@@ -63,12 +65,33 @@ export const Sidebar = () => {
             </nav>
 
             <div className="p-4 border-t border-white/10">
-                <div className="flex items-center gap-3 p-2 rounded-xl bg-slate-50 dark:bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="h-8 w-8 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 shrink-0" />
-                    <div className="overflow-hidden">
-                        <p className="text-sm font-semibold truncate">Keertan BJ</p>
-                        <p className="text-xs text-slate-500 truncate">Pro Plan</p>
-                    </div>
+                <div className="flex items-center gap-3 p-2 rounded-xl bg-slate-50 dark:bg-white/5 transition-all duration-300">
+                    <Link to="/profile" className="flex items-center gap-3 flex-1 min-w-0 group/profile">
+                        <div className="h-8 w-8 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 shrink-0 flex items-center justify-center text-white text-xs font-bold overflow-hidden">
+                            {user?.user_metadata?.avatar_url ? (
+                                <img
+                                    src={user.user_metadata.avatar_url}
+                                    alt="User"
+                                    className="h-full w-full object-cover"
+                                />
+                            ) : (
+                                user?.email?.charAt(0).toUpperCase() || 'U'
+                            )}
+                        </div>
+                        <div className="overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex-1">
+                            <p className="text-sm font-semibold truncate group-hover/profile:text-indigo-600 dark:group-hover/profile:text-indigo-400 transition-colors">{user?.email || 'User'}</p>
+                            <p className="text-xs text-slate-500 truncate">View Profile</p>
+                        </div>
+                    </Link>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => signOut()} // Logout trigger
+                        className="h-8 w-8 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-destructive/10 hover:text-destructive shrink-0"
+                        title="Sign Out"
+                    >
+                        <LogOut className="h-4 w-4" />
+                    </Button>
                 </div>
             </div>
         </aside>

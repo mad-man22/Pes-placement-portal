@@ -199,7 +199,7 @@ export const Dashboard = () => {
                             </p>
                         </div>
                         <button
-                            onClick={() => navigate('/')}
+                            onClick={() => navigate('/companies')}
                             className="bg-white text-indigo-900 px-6 py-3 rounded-xl font-bold hover:bg-indigo-50 transition-colors shadow-lg flex items-center gap-2 whitespace-nowrap"
                         >
                             <Search className="h-5 w-5" />

@@ -15,7 +15,7 @@ const NotFound = () => {
             Oops! The page you're looking for seems to have wandered off into the void.
           </p>
           <Button asChild className="rounded-full px-8 py-6 text-lg shadow-lg hover:shadow-primary/25 transition-all w-full sm:w-auto">
-            <Link to="/">Return to Safety</Link>
+            <Link to="/dashboard">Return to Safety</Link>
           </Button>
         </div>
       </div>

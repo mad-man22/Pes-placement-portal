@@ -22,7 +22,7 @@ const CompanyDetail = () => {
   // If error or not found (and not loading)
   if (!company || error) {
     if (error) console.error(error);
-    return <Navigate to="/" replace />;
+    return <Navigate to="/dashboard" replace />;
   }
 
   return (

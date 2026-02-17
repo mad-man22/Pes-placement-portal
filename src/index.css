@@ -6,9 +6,11 @@
 
 @layer base {
   :root {
-    /* Premium Light Theme - Crisp & Vibrant */
-    --background: 0 0% 100%;
+    /* Professional Clean Theme - Minimalist & Trustworthy */
+    --background: 210 20% 98%;
+    /* Light grayish white */
     --foreground: 222 47% 11%;
+    /* Deep navy/black */
 
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
@@ -16,37 +18,36 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    /* Vibrant Primary: Electric Violet/Indigo */
-    --primary: 250 95% 60%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary: Deep Navy/Charcoal (Professional, Trustworthy) */
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
 
-    /* Secondary: Soft Lavender tint */
-    --secondary: 250 20% 96%;
-    --secondary-foreground: 250 40% 20%;
+    /* Secondary: Light Gray/Slate */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 250 60% 94%;
-    --accent-foreground: 250 90% 40%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 85%;
-    /* Darker border for visibility on white */
+    --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 250 95% 60%;
+    --ring: 222 47% 11%;
 
-    --radius: 1rem;
-    /* More rounded */
+    --radius: 0.5rem;
+    /* Clean, slightly rounded but not bubbly */
 
-    /* Feature Colors */
-    --enterprise: 250 95% 60%;
-    --startup: 160 84% 39%;
-    --scaleup: 40 95% 55%;
-    --product: 290 85% 60%;
-    --service: 190 90% 40%;
+    /* Feature Colors (Muted for Professionalism) */
+    --enterprise: 220 15% 40%;
+    --startup: 150 10% 40%;
+    --scaleup: 30 20% 50%;
+    --product: 260 10% 50%;
+    --service: 200 15% 45%;
 
     /* Sidebar */
     --sidebar-background: 0 0% 100%;
@@ -60,47 +61,44 @@
   }
 
   .dark {
-    /* Premium Dark Theme - Deep Space/Midnight */
-    --background: 260 20% 6%;
-    /* Deep purple-black */
+    /* Professional Dark Theme - Slate/Charcoal */
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 260 20% 8%;
-    /* Slightly lighter deep purple */
+    --card: 217 33% 17%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 260 20% 8%;
+    --popover: 217 33% 17%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 250 95% 65%;
-    /* Lighter violet for dark mode */
-    --primary-foreground: 260 20% 6%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 260 20% 15%;
+    --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 260 20% 15%;
-    --muted-foreground: 250 20% 65%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 260 30% 20%;
+    --accent: 217 33% 17%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 260 20% 15%;
-    --input: 260 20% 15%;
-    --ring: 250 95% 65%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 212 96% 78%;
 
     /* Sidebar */
-    --sidebar-background: 260 20% 5%;
-    --sidebar-foreground: 250 20% 90%;
-    --sidebar-primary: 250 95% 65%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 260 20% 15%;
-    --sidebar-accent-foreground: 250 20% 90%;
-    --sidebar-border: 260 20% 15%;
-    --sidebar-ring: 250 95% 65%;
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 210 40% 98%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 212 96% 78%;
   }
 }
 
@@ -109,21 +107,15 @@
     @apply border-border;
   }
 
-  /* Premium Global Background */
-  /* Universal Background: Pure White with Geometric Grid */
+  /* Professional Global Background */
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground;
+    @apply bg-background text-foreground antialiased selection:bg-slate-200 selection:text-slate-900;
     font-family: 'Inter', system-ui, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 
-    background-color: #f9fafb !important;
-    /* Plain Light Shade (Gray 50) */
-    background-image: none !important;
-    background-attachment: fixed !important;
-  }
-
-  html {
-    background-color: #ffffff !important;
+    /* Clean background - remove important overrides if possible, but keeping consistent with request */
+    background-color: hsl(210, 20%, 98%);
+    background-image: none;
   }
 
   /* Typography headings */
@@ -133,17 +125,23 @@
   h4,
   h5,
   h6 {
-    @apply font-heading tracking-tight;
+    @apply font-semibold tracking-tight;
+    /* Using standard font weight, removed bespoke heading font if not needed */
+    font-family: 'Inter', system-ui, sans-serif;
   }
 }
 
 @layer components {
+
+  /* Clean Card Style - No "elevation" or blur gimmicks */
   .card-elevated {
-    @apply bg-card/80 backdrop-blur-sm border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1;
+    @apply bg-card border border-border shadow-sm hover:shadow-md transition-shadow duration-200;
   }
 
   .glass-panel {
-    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+    @apply bg-white border border-slate-200 shadow-lg;
+    /* Simplified */
+    /* Removed backdrop-blur for a solid, reliable look */
   }
 
   .section-header {
@@ -158,15 +156,16 @@
     @apply text-foreground;
   }
 
+  /* Professional Badges - Muted Backgrounds with Strong Text */
   .category-badge-enterprise {
-    @apply bg-[hsl(215, 70%, 45%)] text-white;
+    @apply bg-slate-100 text-slate-700 border border-slate-200;
   }
 
   .category-badge-startup {
-    @apply bg-[hsl(150, 60%, 40%)] text-white;
+    @apply bg-slate-100 text-slate-700 border border-slate-200;
   }
 
   .category-badge-scaleup {
-    @apply bg-[hsl(35, 90%, 50%)] text-white;
+    @apply bg-slate-100 text-slate-700 border border-slate-200;
   }
 }

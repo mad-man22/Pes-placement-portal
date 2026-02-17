@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Building2, Search, ArrowLeft } from "lucide-react";
+import { Building2, Search, ArrowLeft, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
 
 interface HeaderProps {
   showBackButton?: boolean;
@@ -29,19 +30,27 @@ export const Header = ({ showBackButton = false, searchTerm, onSearchChange }: H
 
   const isActive = (path: string) => location.pathname === path;
 
+  const { signOut, user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await signOut();
+    navigate("/");
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-white/80 dark:bg-black/20 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         {/* Logo & Brand */}
-        <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.location.href = "/"}>
+        <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.location.href = "/dashboard"}>
           {showBackButton && (
-            <Link to="/">
+            <Link to="/dashboard">
               <Button variant="ghost" size="icon" className="mr-1 hover:bg-white/20">
                 <ArrowLeft className="h-5 w-5" />
               </Button>
             </Link>
           )}
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/dashboard" className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-purple-600 text-white shadow-lg transition-transform group-hover:scale-110 duration-300">
               <Building2 className="h-6 w-6" />
             </div>
@@ -66,10 +75,10 @@ export const Header = ({ showBackButton = false, searchTerm, onSearchChange }: H
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-1">
-          {['/', '/compare', '/skill-fit', '/hiring-process', '/hiring-skillsets', '/innovx'].map((path) => {
+        <div className="flex items-center gap-2">
+          {['/companies', '/compare', '/skill-fit', '/hiring-process', '/hiring-skillsets', '/innovx'].map((path) => {
             const labels: Record<string, string> = {
-              '/': 'Companies',
+              '/companies': 'Companies',
               '/compare': 'Compare',
               '/skill-fit': 'Skill Fit',
               '/hiring-process': 'Hiring',
@@ -79,7 +88,7 @@ export const Header = ({ showBackButton = false, searchTerm, onSearchChange }: H
             const active = isActive(path);
 
             return (
-              <Link to={path} key={path}>
+              <Link to={path} key={path} className="hidden md:block">
                 <div className="relative px-3 py-2 rounded-full transition-all duration-300 hover:bg-secondary/80 group">
                   <span className={`text-sm font-medium transition-colors ${active ? 'text-primary' : 'text-muted-foreground group-hover:text-foreground'}`}>
                     {labels[path]}
@@ -91,6 +100,18 @@ export const Header = ({ showBackButton = false, searchTerm, onSearchChange }: H
               </Link>
             );
           })}
+
+          {user && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleLogout}
+              className="ml-2 hover:bg-destructive/10 hover:text-destructive transition-colors"
+              title="Sign Out"
+            >
+              <LogOut className="h-5 w-5" />
+            </Button>
+          )}
         </div>
       </div>
     </header>

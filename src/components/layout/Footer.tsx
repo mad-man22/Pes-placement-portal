@@ -12,7 +12,7 @@ export const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                     {/* Brand Column */}
                     <div className="col-span-1 md:col-span-2 space-y-4">
-                        <Link to="/" className="flex items-center gap-2">
+                        <Link to="/dashboard" className="flex items-center gap-2">
                             <div className="bg-gradient-to-br from-indigo-500 to-purple-600 w-8 h-8 rounded-lg flex items-center justify-center shadow-lg">
                                 <span className="text-white font-bold text-lg">I</span>
                             </div>
@@ -30,7 +30,7 @@ export const Footer = () => {
                         <h4 className="font-semibold text-sm tracking-wide text-foreground">Platform</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
                             <li>
-                                <Link to="/" className="hover:text-primary transition-colors">Browse Companies</Link>
+                                <Link to="/companies" className="hover:text-primary transition-colors">Browse Companies</Link>
                             </li>
                             <li>
                                 <Link to="/compare" className="hover:text-primary transition-colors">Compare Companies</Link>

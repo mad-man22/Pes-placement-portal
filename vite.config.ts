@@ -11,6 +11,18 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       overlay: false,
     },
+    proxy: {
+      "/api/jdoodle": {
+        target: "https://api.jdoodle.com/v1",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/jdoodle/, ""),
+      },
+      "/api/leetcode": {
+        target: "https://alfa-leetcode-api.onrender.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/leetcode/, ""),
+      },
+    },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
