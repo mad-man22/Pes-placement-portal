@@ -1,11 +1,16 @@
 {
-    "routes": [
+    "rewrites": [
         {
-            "handle": "filesystem"
+            "source": "/api/jdoodle/:match*",
+            "destination": "https://api.jdoodle.com/v1/:match*"
         },
         {
-            "src": "/(.*)",
-            "dest": "/index.html"
+            "source": "/api/leetcode/:match*",
+            "destination": "https://alfa-leetcode-api.onrender.com/:match*"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
         }
     ]
 }
