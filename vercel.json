@@ -9,6 +9,10 @@
             "destination": "https://alfa-leetcode-api.onrender.com/:match*"
         },
         {
+            "source": "/api/supabase/:match*",
+            "destination": "https://tyuyusotxjogtoocrwas.supabase.co/:match*"
+        },
+        {
             "source": "/(.*)",
             "destination": "/index.html"
         }
